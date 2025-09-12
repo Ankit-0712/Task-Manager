@@ -1,6 +1,7 @@
 package com.example.taskmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -33,9 +34,9 @@ public class Task {
     private ZonedDateTime updatedAt;
 
     //mandatory assigned user
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties("tasks") // ignore the tasks list inside user to avoid recursion
     private User assignedTo;
 
     //constructor for creating a task without id (for builders)

@@ -1,0 +1,48 @@
+<!-- Top Action Buttons -->
+<div class="actions">
+  <button [routerLink]="['/users/new']">➕ Add User</button>
+  <button [routerLink]="['/tasks']">📋 View Tasks</button>
+</div>
+
+<!-- Users Table -->
+<div *ngIf="users.length > 0; else noUsers">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>TimeZone</th>
+        <th>Active</th>
+        <th>Tasks</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.timezone }}</td>
+        <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let task of user.tasks">
+              {{ task.title }} - {{ task.status }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button [routerLink]="['/users/edit', user.id]">✏️ Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- No Users Template -->
+<ng-template #noUsers>
+  <p>No users found.</p>
+</ng-template>

@@ -1,5 +1,6 @@
 package com.example.taskmanager.controller;
 
+import com.example.taskmanager.DTO.TaskDTO;
 import com.example.taskmanager.model.Task;
 import com.example.taskmanager.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,18 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    // Create a new task with assigned user
+    // Create a new task
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        if (task.getAssignedTo() == null || task.getAssignedTo().getId() == null) {
-            return ResponseEntity.badRequest().build(); // 400 if no user id provided
-        }
+    public ResponseEntity<Task> createTask(@RequestBody TaskDTO dto) {
+        Task task = taskService.createTask(dto);
+        return ResponseEntity.ok(task);
+    }
 
-        Task createdTask = taskService.createTask(task, task.getAssignedTo().getId());
-        return ResponseEntity.ok(createdTask);
+    // Update a task
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDTO dto) {
+        Task task = taskService.updateTask(id, dto);
+        return ResponseEntity.ok(task);
     }
 
     // Get all tasks
@@ -40,16 +44,7 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
 
-    // Update a task and optionally reassign user
-    @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id,
-                                           @RequestBody Task task,
-                                           @RequestParam Long userId) {
-        Task updatedTask = taskService.updateTask(id, task, userId);
-        return ResponseEntity.ok(updatedTask);
-    }
-
-    // Delete a task
+    // Delete task
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
