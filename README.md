@@ -1,37 +1,35 @@
-Task Manager App
-A full-stack Task Manager application built with Spring Boot (backend), Angular (frontend), and PostgreSQL (database). Users can be created, assigned tasks, and manage tasks efficiently with CRUD operations.
+# Task Manager App
 
-Features
+A full-stack **Task Manager** application built with **Spring Boot** (backend), **Angular** (frontend), and **PostgreSQL** (database) for managing users and tasks efficiently.
 
-User Management
+---
 
-Create, Read, Update, Delete (CRUD) users
+## Features
 
-Assign tasks to users
+* CRUD operations for Users and Tasks
+* Assign tasks to users
+* Track task status (Pending, In Progress, Completed)
+* Responsive UI with Angular
+* Field validations
 
-Task Management
+---
 
-Create, Read, Update, Delete tasks
+## Tech Stack
 
-Assign tasks to existing users
+| Layer       | Technology                         |
+| ----------- | ---------------------------------- |
+| Frontend    | Angular 17+, HTML, CSS, TypeScript |
+| Backend     | Spring Boot 3, Java 17             |
+| Database    | PostgreSQL 15+                     |
+| ORM         | Spring Data JPA (Hibernate)        |
+| HTTP Client | Angular HttpClient                 |
+| Tools       | VS Code, IntelliJ IDEA, Postman    |
 
-Track task status (Pending, In Progress, Completed)
+---
 
-View all users with their tasks
+## Folder Structure
 
-Responsive UI using Angular
-
-Validation for required fields
-
-Tech Stack
-Layer	Technology
-Frontend	Angular 17+, HTML, CSS, TypeScript
-Backend	Spring Boot 3, Java 17
-Database	PostgreSQL 15+
-ORM	Spring Data JPA (Hibernate)
-HTTP Client	Angular HttpClient
-Tools	VS Code (frontend), IntelliJ IDEA (backend), Postman
-Folder Structure
+```
 taskmanager/
 ├── backend/       # Spring Boot backend
 │   ├── src/main/java/com/example/taskmanager
@@ -40,102 +38,77 @@ taskmanager/
 │   ├── src/app
 │   ├── angular.json
 └── README.md
+```
 
-Prerequisites
+---
 
-Java 17
+## Prerequisites
 
-Node.js 18+ & npm
+* Java 17, Node.js 18+, Angular CLI 17+
+* PostgreSQL 15+
+* IntelliJ IDEA (backend), VS Code (frontend)
 
-Angular CLI 17+
+---
 
-PostgreSQL 15+
+## Backend Setup
 
-IDEs: IntelliJ IDEA (backend), VS Code (frontend)
-
-Backend Setup (Spring Boot)
-
-Navigate to the backend folder:
-
+```bash
 cd taskmanager/backend
+```
 
+Configure `application.properties` with your DB credentials:
 
-Configure application.properties for PostgreSQL:
-
+```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/taskdb
-spring.datasource.username=YOUR_DB_USER
-spring.datasource.password=YOUR_DB_PASSWORD
+spring.datasource.username=USER
+spring.datasource.password=PASSWORD
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+```
 
+Build & run:
 
-Build and run the backend:
-
+```bash
 mvn clean install
 mvn spring-boot:run
+```
 
+Backend runs at: `http://localhost:8080/api/`
 
-The backend will run at:
+---
 
-http://localhost:8080/api/
+## Frontend Setup
 
-Frontend Setup (Angular)
-
-Navigate to the frontend folder:
-
+```bash
 cd taskmanager/frontend
-
-
-Install dependencies:
-
 npm install
-
-
-Run the Angular app:
-
 ng serve
+```
 
+Frontend runs at: `http://localhost:4200/`
 
-The frontend will run at:
+> Ensure backend is running before using frontend.
 
-http://localhost:4200/
+---
 
+## API Endpoints
 
-Make sure the backend is running before using the frontend.
+**Users:** GET `/api/users`, GET `/api/users/{id}`, POST `/api/users`, PUT `/api/users/{id}`, DELETE `/api/users/{id}`
 
-API Endpoints
-Users
-Method	URL	Description
-GET	/api/users	Get all users
-GET	/api/users/{id}	Get user by ID
-POST	/api/users	Create new user
-PUT	/api/users/{id}	Update user
-DELETE	/api/users/{id}	Delete user
-Tasks
-Method	URL	Description
-GET	/api/tasks	Get all tasks
-GET	/api/tasks/{id}	Get task by ID
-POST	/api/tasks	Create new task
-PUT	/api/tasks/{id}	Update task
-DELETE	/api/tasks/{id}	Delete task
-Usage
+**Tasks:** GET `/api/tasks`, GET `/api/tasks/{id}`, POST `/api/tasks`, PUT `/api/tasks/{id}`, DELETE `/api/tasks/{id}`
 
-Add new users using the Add User button.
+---
 
-Create tasks for users using Add Task.
+## Usage
 
-View tasks assigned to each user in the User List.
+* Add users via **Add User** button
+* Create tasks via **Add Task**
+* Edit/delete users and tasks
+* Update task status in the task form
 
-Edit or delete users and tasks using the respective buttons.
+---
 
-Task status can be updated directly from the task form.
+## Future Improvements
 
-Future Improvements
-
-Add unit tests for backend and frontend.
-
-Add authentication & authorization (Spring Security + JWT).
-
-Add filtering & search for users and tasks.
-
-Add task priority & deadlines.
+* Unit tests for frontend & backend
+* Authentication & Authorization (JWT)
+* Filtering, search, task priority, deadlines
