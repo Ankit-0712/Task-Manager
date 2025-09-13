@@ -126,7 +126,7 @@ Frontend runs at: `http://localhost:4200/`
 
 ## 🧪 Unit Tests
 
-All backend unit test cases are documented in [Unit Test Cases]([Unit Test Cases](TM-Backend/src/main/java/com/example/taskmanager/docs/unit-test-case.md)
+All backend unit test cases are documented in [Unit Test Cases]([Unit Test Cases](docs/unit-test-case.md)
 ).  
 You can run all tests with:
 
