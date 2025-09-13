@@ -50,6 +50,17 @@ taskmanager/
 
 ---
 
+## 🗄️ PostgreSQL Setup
+
+1. **Install PostgreSQL**  
+   Download and install PostgreSQL from [https://www.postgresql.org/download/](https://www.postgresql.org/download/) and start the PostgreSQL server.
+
+2. **Create a database**  
+   Open `psql` (PostgreSQL CLI) or use pgAdmin and run:
+
+   ```sql
+   CREATE DATABASE taskmanager;
+
 ## Backend Setup
 
 ```bash
