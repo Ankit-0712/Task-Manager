@@ -123,3 +123,13 @@ Frontend runs at: `http://localhost:4200/`
 * Unit tests for frontend & backend
 * Authentication & Authorization (JWT)
 * Filtering, search, task priority, deadlines
+
+## 🧪 Unit Tests
+
+All backend unit test cases are documented in [Unit Test Cases](docs/unit-test-case.md).  
+You can run all tests with:
+
+```bash
+cd backend
+mvn test
+
