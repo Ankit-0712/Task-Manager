@@ -12,7 +12,7 @@ export class UserService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'  // ✅ Important
+      'Content-Type': 'application/json' // content should be in json 
     })
   };
 
@@ -27,11 +27,11 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl, user, this.httpOptions); // ✅ Pass headers
+    return this.http.post<User>(this.baseUrl, user, this.httpOptions); 
   }
 
   updateUser(id: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/${id}`, user, this.httpOptions); // ✅ Pass headers
+    return this.http.put<User>(`${this.baseUrl}/${id}`, user, this.httpOptions); 
   }
 
   deleteUser(id: number): Observable<void> {

@@ -16,7 +16,7 @@
         <th>TimeZone</th>
         <th>Active</th>
         <th>Tasks</th>
-        <th>Actions</th> <!-- Added for Delete button -->
+        <th>Actions</th> 
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
         </td>
         <td>
           <button [routerLink]="['/users/edit', user.id]">✏️ Edit</button>
-          <button (click)="deleteUser(user.id)">🗑️ Delete</button> <!-- Delete button -->
+          <button (click)="deleteUser(user.id)">🗑️ Delete</button> 
         </td>
       </tr>
     </tbody>

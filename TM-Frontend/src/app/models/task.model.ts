@@ -7,5 +7,5 @@ export interface Task {
   status: string;
   createdAt: string;
   updatedAt: string;
-  assignedTo: User; // now backend sends it
+  assignedTo: User; 
 }
